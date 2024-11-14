@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { SearchDialog } from "./search-dialog";
-import LogoSVG from "../public/undp-logo.svg";
+// import LogoSVG from "../public/undp-logo.svg";
 import { MobileMenu } from "./mobile-menu";
 // import Hamburger from "../public/hamburger.svg";
 // import Times from "../public/times-blue.svg";
