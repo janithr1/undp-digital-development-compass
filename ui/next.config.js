@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    loader: "cloudinary",
+    loader: "akamai",
     path: "",
   },
   basePath: "/undp-digital-development-compass",
