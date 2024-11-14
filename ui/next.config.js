@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // reactStrictMode: true,
-  // images: {
-  //   loader: "akamai",
-  //   path: "",
-  // },
+  reactStrictMode: true,
+  images: {
+    loader: "akamai",
+    path: "/undp-digital-development-compass",
+  },
   basePath: "/undp-digital-development-compass",
   assetPrefix: "/undp-digital-development-compass",
   env: {
