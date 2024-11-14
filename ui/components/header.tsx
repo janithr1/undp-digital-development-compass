@@ -161,7 +161,7 @@ export function Header(props: { countries: CountryNameAndAlpha[] }) {
                       Digital Development Compass
                     </a>
                   </Link>
-                  <Link href="/methodology/digital-rights-dashboard">
+                  <Link href="/undp-digital-development-compass/methodology/digital-rights-dashboard">
                     <a className="px-4 z-30 py-2 h-20 flex items-center justify-start header-nav-bg-color hover:footer-background-color hover:text-white text-sm uppercase font-medium whitespace-nowrap">
                       Digital Rights Dashboard
                     </a>

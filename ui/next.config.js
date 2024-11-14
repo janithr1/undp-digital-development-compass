@@ -11,10 +11,10 @@ const nextConfig = {
     PASSWORD_PROTECT: process.env.NODE_ENV !== "development",
     SITE_CONFIG: process.env.ENV ?? "dev"
   },
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  },
+  // i18n: {
+  //   locales: ["en"],
+  //   defaultLocale: "en",
+  // },
 };
 
 module.exports = nextConfig;
