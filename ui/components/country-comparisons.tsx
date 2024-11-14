@@ -12,12 +12,32 @@ import { Select } from "./select";
 import { Spinner } from "./spinner";
 
 async function fetchComparisonData(_: string, iso3: string, key: string) {
-  let url = `/api/compare`;
-  let params = { key, country: iso3 };
-  let stringifiedParams = new URLSearchParams(params).toString();
-  // @ts-ignore
-  const res = await fetch(`${url}?${stringifiedParams}`);
-  return await res.json();
+  //api ssr
+  // let url = `/api/compare`;
+  // let params = { key, country: iso3 };
+  // let stringifiedParams = new URLSearchParams(params).toString();
+  // // @ts-ignore
+  // const res = await fetch(`${url}?${stringifiedParams}`);
+  // return await res.json();
+   
+  const countryMatch = db.countries.find(
+    (c) => c["ISO-alpha3 Code"] === country
+  );
+
+  if (!countryMatch) {
+    return;
+  }
+
+  return db.countries.filter((c) => {
+    if (regionalKeys.includes(key as string)) {
+      // Filter by region.
+      return countryMatch?.[key as keyof Country] === c[key as keyof Country];
+    } else {
+      // Filter by sids, lldc, or ldc. Include the country itself in the results.
+      return c[key as keyof Country] || c["ISO-alpha3 Code"] === country;
+    }
+  }); 
+
 } 
 
 interface CountryComparisonsProps {

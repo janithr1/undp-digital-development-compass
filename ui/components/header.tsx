@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { SearchDialog } from "./search-dialog";
-// import LogoSVG from "../public/undp-logo.svg";
+import LogoSVG from "../public/undp-logo.svg";
 import { MobileMenu } from "./mobile-menu";
-// import Hamburger from "../public/hamburger.svg";
-// import Times from "../public/times-blue.svg";
+import Hamburger from "../public/hamburger.svg";
+import Times from "../public/times-blue.svg";
 
 export function SiteName() {
   return (
@@ -78,7 +78,7 @@ export function Header(props: { countries: CountryNameAndAlpha[] }) {
                 >
                   <Image
                     id="logo"
-                    src="../public/undp-logo.svg"
+                    src={LogoSVG}
                     alt="UNDP Logo"
                   />
                 </a>
@@ -95,9 +95,9 @@ export function Header(props: { countries: CountryNameAndAlpha[] }) {
             >
               <span className="tracking-wide">
                 {mobileMenuOpen ? (
-                  <Image src="../public/times-blue.svg" alt="Close menu icon" />
+                  <Image src={Times} alt="Close menu icon" />
                 ) : (
-                  <Image src="../public/hamburger.svg" alt="Open menu icon" />
+                  <Image src={Hamburger} alt="Open menu icon" />
                 )}
               </span>
             </button>
@@ -117,7 +117,7 @@ export function Header(props: { countries: CountryNameAndAlpha[] }) {
                   }`}>
                   <Image
                     id="logo"
-                    src="../public/undp-logo.svg"
+                    src={LogoSVG}
                     alt="UNDP Logo"
                     className="transition-all duration-300"
                   />
