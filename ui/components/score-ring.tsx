@@ -18,7 +18,7 @@ import { getOrdinal } from "lib";
 import { ancillary } from "database/ancillary";
 import kebabCase from "lodash/kebabCase";
 
-const scoreDomain = [1, 6];
+const scoreDomain = [0, 5];
 const numberOfStages = scoreDomain[1] - scoreDomain[0];
 const tweakColor = (color: string) => {
   const d3Color = hcl(color);
@@ -31,10 +31,12 @@ export const ScoreRing = ({
   country,
   pillars: pillarData,
   defaultHoveredSubpillar,
+  type
 }: {
   country: Country;
   pillars: typeof ancillary.pillars;
   defaultHoveredSubpillar?: string;
+  type?:string
 }) => {
   const pillars = useMemo(() => {
     return Object.keys(pillarData)
@@ -169,7 +171,7 @@ export const ScoreRing = ({
               className="mb-2 mr-2"
               style={{ color: `${pillarColorsMap[pillar]}` }}
             >
-              {pillarIcons[pillar.toLowerCase()]}
+              {pillarIcons[pillar]}
             </div>
             <div className="mb-2">{pillar}</div>
           </div>
@@ -209,7 +211,7 @@ export const ScoreRing = ({
             return (
               <radialGradient
                 key={pillar}
-                id={`${pillar}-gradient`}
+                id={`${pillar.replace(/\s+/g, "-")}-gradient`}
                 gradientUnits="userSpaceOnUse"
                 r={outerRingR[1]}
                 cx={0}
@@ -275,7 +277,7 @@ export const ScoreRing = ({
                   <path
                     className="transition-all"
                     d={fillArc}
-                    fill={`url(#${pillar}-gradient)`}
+                    fill={`url(#${pillar.replace(/\s+/g, "-")}-gradient)`}
                   />
                 </g>
               );
@@ -300,14 +302,14 @@ export const ScoreRing = ({
               innerRingR[0] + r * 0.1
             );
             iconPosition[1] -= height / 2;
-
+               const pillarsName = pillar == "Digital Public Infrastructure" ? "DPI" : pillar; 
             return (
               <g key={`${pillar}-${index}`}>
                 <g className="text-sm">
                   <CircleText
                     id={`name-${pillar}`}
                     rotate={midAngle / (Math.PI / 180)}
-                    text={pillar as string}
+                    text={pillarsName as string}
                     r={innerRingR[1] - r * 0.05}
                     stroke="white"
                     strokeWidth={4}
@@ -316,7 +318,7 @@ export const ScoreRing = ({
                   <CircleText
                     id={`name-${pillar}`}
                     rotate={midAngle / (Math.PI / 180)}
-                    text={pillar as string}
+                    text={pillarsName as string}
                     r={innerRingR[1] - r * 0.05}
                     fill={color}
                     className="hidden md:block"
@@ -330,7 +332,7 @@ export const ScoreRing = ({
                     }}
                   >
                     {/* @ts-ignore */}
-                    {pillarIcons[pillar.toLowerCase()]}
+                    {pillarIcons[pillar]}
                   </g>
                   {/* mobile */}
                   <g
@@ -341,13 +343,15 @@ export const ScoreRing = ({
                     }}
                   >
                     {/* @ts-ignore */}
-                    {pillarIcons[pillar.toLowerCase()]}
+                    {pillarIcons[pillar]}
                   </g>
                 </g>
                 {/* <text x={endPoint[0]} y={endPoint[1]} textAnchor={endPoint[0] < 0 ? "start" : "end"}>
                 {pillar}
               </text> */}
                 {subpillars.map((subpillar,index) => {
+                 let yText  =  type == 'data' ?  (index == 2 ? -10: -8) : (index == 2 ? 4: 9) ;
+                 let yValue  =  type == 'data' ? 15 : 24;
                 //  const y:number = index == 8 ? - 19: -15;
                   const isHovered = hoveredSubpillar === subpillar;
                   const mainArc = getArc(
@@ -365,11 +369,17 @@ export const ScoreRing = ({
                     outerRingR[1] + r * 0.1
                   );
                   const placement =
-                    Math.abs(endPoint[0]) < 180
-                      ? "middle"
+                    Math.abs(endPoint[0]) < 40
+                      ? "end"
                       : endPoint[0] < 0
                       ? "end"
                       : "start";
+                   const placementMobile =
+                   Math.abs(endPoint[0]) < 50
+                   ? "start"
+                   : endPoint[0] < 20
+                   ? "end"
+                   : "start";
                   const offset = {
                     start: [10, 0],
                     middle: [0, -10],
@@ -436,8 +446,8 @@ export const ScoreRing = ({
                           {/* mobile */}
                           <g
                             className="transition-all md:hidden"
-                            transform={`translate(${starPosition[0] - 5} ${
-                              starPosition[1] - 32
+                            transform={`translate(${starPosition[0] - 15} ${
+                              starPosition[1] - 20
                             })`}
                           >
                             <use
@@ -483,7 +493,7 @@ export const ScoreRing = ({
 
                       {hasData && (
                         <g
-                          className={`hidden md:block sp-txt text-sm ${
+                          className={`hidden rainbow-web sp-txt text-sm ${
                             isHovered
                               ? "text-black font-semibold"
                               : "text-gray-500"
@@ -495,14 +505,14 @@ export const ScoreRing = ({
                           dominantBaseline="middle"
                         >
                           <text 
-                             y= {index == 2 ? -30: 0}
+                             y= {yText}
                             className={`font-semibold ${
                               isHovered ? "text-indigo-500" : ""
                             } text-xs md:text-base`}
                           >
                             {subpillar}
                           </text>
-                          <text y="15" className="font-light">
+                          <text y={yValue} className="font-light">
                             {value}
                           </text>
                           {/* {!!rank && (
@@ -518,7 +528,7 @@ export const ScoreRing = ({
                       )}
                       {hasData && (
                         <g
-                          className={`md:hidden sp-txt text-sm ${
+                          className={`rainbow-mobile sp-txt text-sm ${
                             isHovered
                               ? "text-black font-semibold"
                               : "text-gray-500"
@@ -526,14 +536,13 @@ export const ScoreRing = ({
                           transform={`translate(${endPoint[0] + offset[0]},${
                             endPoint[1] + offset[1]
                           })`}
-                          textAnchor={placement}
+                          textAnchor={placementMobile}
                           dominantBaseline="middle"
                         >
                           {isHovered && (
                             <>
                               <text
-                                // x=""
-                                // y="-8"
+                                y= {index == 2 ? -20: -30}
                                 className={`font-semibold ${
                                   isHovered ? "text-indigo-500" : ""
                                 } text-xs md:text-base `}
@@ -544,7 +553,7 @@ export const ScoreRing = ({
                           )}
 
                           {
-                            <text y="15" className="font-light">
+                            <text y="-5" className="text-xs">
                               {value}
                             </text>
                           }
@@ -601,8 +610,8 @@ const getArc = (
 };
 
 const distanceOffset = scaleLinear()
-  .domain([-Math.PI * 0.3, -Math.PI * 0.06, 0, Math.PI * 0.06, Math.PI * 0.3])
-  .range([0, -0.05, -0.15, -0.05, 0])
+  .domain([-Math.PI * 0.39, -Math.PI * 0.06, 0, Math.PI * 0.06, Math.PI * 0.21])
+  .range([0, -0.04, -0.20, -0.19, 0])
   .clamp(true);
 const getDistanceOffsetFromAngle = (angle: number) => distanceOffset(angle);
 

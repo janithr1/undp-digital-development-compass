@@ -32,7 +32,7 @@ interface CountryComparisonsProps {
 export function CountryComparisons(props: CountryComparisonsProps) {
   const { country, pillars, relatedCountries = [] } = props;
   const [sameKey, setSameKey] = useState<string>("Sub-region Name");
-  const [pillar, setPillar] = useState<string>("DPInfrastructure");
+  const [pillar, setPillar] = useState<string>("Digital Public Infrastructure");
   const [subpillar, setSubpillar] = useState<string>();
   const countryCode = country["ISO-alpha3 Code"];
   const pillarNames = Object.keys(pillars);
@@ -105,7 +105,7 @@ export function CountryComparisons(props: CountryComparisonsProps) {
           value={pillar}
           trigger={
             <span
-              className="text-xs text-white font-medium uppercase tracking-widest py-[0.3em] px-[1em] rounded-full"
+              className="text-xs text-white font-medium uppercase py-[0.3em] px-[1em] rounded-full"
               style={{ background: ancillary.pillarColorMap[pillar].base }}
             >
               {pillar}
@@ -116,7 +116,7 @@ export function CountryComparisons(props: CountryComparisonsProps) {
             let color = ancillary.pillarColorMap[asPillar].base;
             return (
               <span
-                className="text-xs text-white font-medium uppercase tracking-widest py-[0.3em] px-[1em] rounded-full"
+                className="text-xs text-white font-medium uppercase py-[0.3em] px-[1em] rounded-full"
                 style={{ background: color }}
               >
                 {asPillar}
