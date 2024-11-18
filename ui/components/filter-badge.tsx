@@ -1,4 +1,4 @@
-import Times from "../public/times-red.svg";
+// import Times from "../public/times-red.svg";
 import Image from "next/image";
 interface FilterBadgeProps {
   label: string;
@@ -46,7 +46,7 @@ className={`inline-flex py-0.6 pl-1 pr-0 text-[16px] sm:text-[16px]  md:text-[20
     >
       {/* <span className="sr-only">Remove {label}</span> */}
       <Image
-        src={Times}
+        src={'/times-red.svg'}
         alt="Times"
         className="mr-[8px]"
         width={22}

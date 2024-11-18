@@ -370,11 +370,13 @@ export default function About(
               </p>
             </div>
 
-            <div className="container mx-auto">
+            <div className="container mx-auto flex items-center justify-center">
               <Image
                 src="/github.png"
                 alt="The undp/digital-nation-dashboard GitHub repository"
-                layout="intrinsic"
+                width={1024} // Set the appropriate width
+                height={575} // Set the appropriate height
+                objectFit="contain" // Optional to ensure the image fits within its bounds
               />
             </div>
 
@@ -451,7 +453,7 @@ export default function About(
                       }`}
                     >
                       <Image
-                        src={'/chevron-right.svg'}
+                        src={"/chevron-right.svg"}
                         width={13}
                         height={20}
                         alt="chevronRight"
