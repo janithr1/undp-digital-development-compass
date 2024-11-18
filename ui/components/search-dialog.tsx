@@ -7,7 +7,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useLocalStorage } from "react-use";
 import { matchSorter } from "match-sorter";
-import SearchIcon from "../public/search.svg"
+//import SearchIcon from "../public/search.svg"
 import Image from "next/image";
 
 interface SearchDialogProps {
@@ -179,7 +179,8 @@ export function SearchDialog(props: SearchDialogProps) {
         onClick={() => setOpen(true)}
         className={`header-nav-bg-color font-semibold hover:header-nav-bg-color hover:text-white ${props.isOpen ? 'py-5' : 'py-4'} text-xs uppercase tracking-wide text-brand-blue-dark flex-shrink-0 flex items-center`}
         >
-        <Image src={SearchIcon} alt="SearchIcon" className="text-base mr-1" />
+        <Image src={'/search.svg'}  width={24}
+                  height={24} alt="SearchIcon" className="text-base mr-1" />
       </button>
 
       <Dialog

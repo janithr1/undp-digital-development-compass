@@ -15,9 +15,9 @@ import { ancillary } from "database/ancillary";
 import Image from "next/image";
 import Script from "next/script";
 import YouTube from "react-youtube";
-import chevronRight from "../public/chevron-right.svg";
+//import chevronRight from "../public/chevron-right.svg";
 //import arrowBase from "../public/arrow-base.svg";
-import githubScreenshot from "../public/github.png";
+//import githubScreenshot from "../public/github.png";
 
 const AboutScrollytelling = dynamic(
   () => import("components/about-scrollytelling"),
@@ -372,8 +372,9 @@ export default function About(
 
             <div className="container mx-auto">
               <Image
-                src={githubScreenshot}
+                src="/github.png"
                 alt="The undp/digital-nation-dashboard GitHub repository"
+                layout="intrinsic"
               />
             </div>
 
@@ -450,7 +451,9 @@ export default function About(
                       }`}
                     >
                       <Image
-                        src={chevronRight}
+                        src={'/chevron-right.svg'}
+                        width={13}
+                        height={20}
                         alt="chevronRight"
                         className="m-0 p-0"
                       />
@@ -822,7 +825,7 @@ const Scrollytelling = ({ country }: { country: any }) => {
 
           {currentStepIndex > 1 && currentStepIndex < 5 && (
             <div className="SolarSystem w-[min(70vh,100%)] pointer-events-[all]">
-              <img src="/DTF.gif" alt="DTF Animation" />
+              <img src="/undp-digital-development-compass/DTF.gif" alt="DTF Animation" />
             </div>
           )}
 

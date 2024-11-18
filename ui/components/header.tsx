@@ -4,8 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import { SearchDialog } from "./search-dialog";
 // import LogoSVG from "../public/undp-logo.svg";
 import { MobileMenu } from "./mobile-menu";
-import Hamburger from "../public/hamburger.svg";
-import Times from "../public/times-blue.svg";
+// import Hamburger from "../public/hamburger.svg";
+// import Times from "../public/times-blue.svg";
 
 export function SiteName() {
   return (
@@ -97,9 +97,11 @@ export function Header(props: { countries: CountryNameAndAlpha[] }) {
             >
               <span className="tracking-wide">
                 {mobileMenuOpen ? (
-                  <Image src={Times} alt="Close menu icon" />
+                  <Image src={'/times-blue.svg'} width={24}
+                  height={24} alt="Close menu icon" />
                 ) : (
-                  <Image src={Hamburger} alt="Open menu icon" />
+                  <Image src={'/hamburger.svg'} width={24}
+                  height={24} alt="Open menu icon" />
                 )}
               </span>
             </button>
