@@ -12,9 +12,10 @@ import { useEffect, useState } from "react";
 import { interpolateHclLong, lab, scaleLinear } from "d3";
 import { AnimatePresence, motion } from "framer-motion";
 import { ancillary } from "database/ancillary";
-import Image from "next/image";
+//import Image from "next/image";
 import Script from "next/script";
 import YouTube from "react-youtube";
+import { prefix } from "../lib/prefix";
 //import chevronRight from "../public/chevron-right.svg";
 //import arrowBase from "../public/arrow-base.svg";
 //import githubScreenshot from "../public/github.png";
@@ -371,12 +372,11 @@ export default function About(
             </div>
 
             <div className="container mx-auto flex items-center justify-center">
-              <Image
-                src="/github.png"
+              <img
+                src={`${prefix}/github.png`}
                 alt="The undp/digital-nation-dashboard GitHub repository"
                 width={1024} // Set the appropriate width
                 height={575} // Set the appropriate height
-                objectFit="contain" // Optional to ensure the image fits within its bounds
               />
             </div>
 
@@ -452,8 +452,8 @@ export default function About(
                         isHovered ? "translate-x-0" : "-translate-x-2"
                       }`}
                     >
-                      <Image
-                        src={"/chevron-right.svg"}
+                      <img
+                        src={`${prefix}/chevron-right.svg`}
                         width={13}
                         height={20}
                         alt="chevronRight"
@@ -827,7 +827,7 @@ const Scrollytelling = ({ country }: { country: any }) => {
 
           {currentStepIndex > 1 && currentStepIndex < 5 && (
             <div className="SolarSystem w-[min(70vh,100%)] pointer-events-[all]">
-              <img src="/undp-digital-development-compass/DTF.gif" alt="DTF Animation" />
+              <img src={`${prefix}/DTF.gif`} alt="DTF Animation" />
             </div>
           )}
 

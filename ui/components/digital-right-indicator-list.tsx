@@ -4,10 +4,11 @@ import { db } from "database";
 import { roundNumber } from "lib";
 import { useState } from "react";
 import useSWR from "swr";
-import ExternalDefault from "../public/external-default.svg";
-import ExternalDefaultHover from "../public/external-hover.svg";
-import Image from "next/image";
+//import ExternalDefault from "../public/external-default.svg";
+//import ExternalDefaultHover from "../public/external-hover.svg";
+//import Image from "next/image";
 import { uniqBy } from "lodash";
+import { prefix } from "lib/prefix";
 interface IndicatorListProps {
   country: string;
   pillar: DigitalRightsPillar;
@@ -352,15 +353,15 @@ const Indicator = ({
                   onMouseLeave={() => setIconIsHovered(false)}
                 >
                   {isIconHovered ? (
-                    <Image
-                      src={ExternalDefaultHover}
+                    <img
+                    src={`${prefix}/external-hover.svg`}
                       height={12}
                       alt="ExternalDefaultHover"
                       className="mr-1 flex-none"
                     />
                   ) : (
-                    <Image
-                      src={ExternalDefault}
+                    <img
+                    src={`${prefix}/external-default.svg`}
                       height={12}
                       alt="ExternalDefault"
                       className="mr-1 flex-none"

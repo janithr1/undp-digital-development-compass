@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo";
 import { ReactNode } from "react";
-import Image from "next/image";
+//import Image from "next/image";
 // import { FaCreativeCommonsBy } from "react-icons/fa";
 // import { GoMarkGithub } from "react-icons/go";
 // import { GrCreativeCommons } from "react-icons/gr";
@@ -15,6 +15,7 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
+import { prefix } from "lib/prefix";
 type Props = {
   children?: ReactNode;
   title?: string;
@@ -33,7 +34,7 @@ const Layout = ({ children, title = "", countries = [] }: Props) => {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between pb-[32px] sm:pb-[32px] md:pb-[48px] lg:pb-[48px]">
             <div className="flex flex-row items-center space-x-0 mb-0 sm:mb-0 md:mb-4 lg:mb-0">
               <div className="w-[60px] flex-shrink-0 mb-0 sm:mb-0">
-                <Image src={'/undp-white-logo.svg'} width={60}
+                <img src={`${prefix}/undp-white-logo.svg`} width={60}
                  height={123} alt="UNDP Logo" />
               </div>
               <div className="text-xl sm:text-xl md:text-[25px] md:leading-[1.15] sm:pl-4 font-normal md:text-left lg:text-left">
@@ -63,14 +64,14 @@ const Layout = ({ children, title = "", countries = [] }: Props) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Image height={20} width={20} src={'/instagram-brands-solid.svg'} alt="InstagramSVG" />
+                  <img height={20} width={20} src={`${prefix}/instagram-brands-solid.svg`} alt="InstagramSVG" />
                 </a>
                 <a
                   href="https://twitter.com/UNDP"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                    <Image height={20} width={20} src={'/x-twitter-brands-solid.svg'} alt="xTwitter" />
+                    <img height={20} width={20} src={`${prefix}/x-twitter-brands-solid.svg`} alt="xTwitter" />
                 </a>
                 <a
                   href="https://www.youtube.com/user/undp"
@@ -115,14 +116,14 @@ const Layout = ({ children, title = "", countries = [] }: Props) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Image height={20} width={20} src={'/instagram-brands-solid.svg'} alt="InstagramSVG" />
+                  <img height={20} width={20} src={`${prefix}/instagram-brands-solid.svg`} alt="InstagramSVG" />
                 </a>
                 <a
                   href="https://twitter.com/UNDP"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                    <Image height={20} width={20} src={'/x-twitter-brands-solid.svg'} alt="xTwitter" />
+                    <img height={20} width={20} src={`${prefix}/x-twitter-brands-solid.svg`} alt="xTwitter" />
                 </a>
               <a
                 href="https://www.youtube.com/user/undp"

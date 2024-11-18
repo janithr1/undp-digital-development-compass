@@ -1,9 +1,10 @@
-import Image from "next/image";
+//import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { SearchDialog } from "./search-dialog";
 // import LogoSVG from "../public/undp-logo.svg";
 import { MobileMenu } from "./mobile-menu";
+import { prefix } from "lib/prefix";
 // import Hamburger from "../public/hamburger.svg";
 // import Times from "../public/times-blue.svg";
 
@@ -76,12 +77,12 @@ export function Header(props: { countries: CountryNameAndAlpha[] }) {
                     isScrolled ? "h-[86px] w-[40px]" : "h-[75px] w-[40px]"
                   }`}
                 >
-                  <Image
+                  <img
                     id="logo"
-                    src={"/undp-logo.svg"}
+                    src={`${prefix}/undp-logo.svg`}
                     alt="UNDP Logo"
-                    layout="fill"
-                    objectFit="contain"
+                    // layout="fill"
+                    // objectFit="contain"
                   />
                 </a>
               </Link>
@@ -97,10 +98,10 @@ export function Header(props: { countries: CountryNameAndAlpha[] }) {
             >
               <span className="tracking-wide">
                 {mobileMenuOpen ? (
-                  <Image src={'/times-blue.svg'} width={24}
+                  <img src={`${prefix}/times-blue.svg`} width={24}
                   height={24} alt="Close menu icon" />
                 ) : (
-                  <Image src={'/hamburger.svg'} width={24}
+                  <img src={`${prefix}/hamburger.svg`} width={24}
                   height={24} alt="Open menu icon" />
                 )}
               </span>
@@ -122,13 +123,13 @@ export function Header(props: { countries: CountryNameAndAlpha[] }) {
                     isScrolled ? "h-[115px] w-[57px]" : "h-[122px] w-[60px]"
                   }`}
                 >
-                  <Image
+                  <img
                     id="logo"
-                    src={"/undp-logo.svg"}
+                    src={`${prefix}/undp-logo.svg`}
                     alt="UNDP Logo"
-                    layout="fill"
-                    objectFit="contain" // Adjusts the image to fit within the container
-                    className="transition-all duration-300"
+                    // layout="fill"
+                    // objectFit="contain" // Adjusts the image to fit within the container
+                    // className="transition-all duration-300"
                   />
                 </a>
               </Link>
@@ -170,7 +171,7 @@ export function Header(props: { countries: CountryNameAndAlpha[] }) {
                         Digital Development Compass
                       </a>
                     </Link>
-                    <Link href="/undp-digital-development-compass/methodology/digital-rights-dashboard">
+                    <Link href="/methodology/digital-rights-dashboard">
                       <a className="px-4 z-30 py-2 h-20 flex items-center justify-start header-nav-bg-color hover:footer-background-color hover:text-white text-sm uppercase font-medium whitespace-nowrap">
                         Digital Rights Dashboard
                       </a>
