@@ -18,10 +18,10 @@ import {
   dimensionsTable,
 } from "database/methodologyTableData";
 import { ancillary } from "database/ancillary";
-import chevronRight from "../../public/chevron-right.svg";
-import downloadDefault from "../../public/download-default.svg";
+//import chevronRight from "../../public/chevron-right.svg";
+//import downloadDefault from "../../public/download-default.svg";
 //import arrowBase from "../../public/arrow-base.svg";
-import downloadHover from "../../public/download-hover.svg";
+//import downloadHover from "../../public/download-hover.svg";
 
 const NavBar = () => {
   return (
@@ -1282,15 +1282,15 @@ export default function DIGITAL_DEVELOPMENT_COMPASS(
                   onMouseLeave={() => setDownloadHovered(false)}
                 >
                   {isDownloadHovered ? (
-                    <Image
-                      src={downloadHover}
+                    <img
+                      src="/undp-digital-development-compass/download-hover.svg"
                       alt="downloadHover"
                       width={16}
                       height={16}
                     />
                   ) : (
-                    <Image
-                      src={downloadDefault}
+                    <img
+                      src="/undp-digital-development-compass/download-default.svg"
                       alt="download"
                       width={16}
                       height={16}
@@ -1314,8 +1314,8 @@ export default function DIGITAL_DEVELOPMENT_COMPASS(
                     isHovered ? "translate-x-0" : "-translate-x-2"
                   }`}
                 >
-                  <Image
-                    src={chevronRight}
+                  <img
+                    src="/undp-digital-development-compass/chevron-right.svg"
                     alt="chevronRight"
                     className="m-0 p-0"
                   />
