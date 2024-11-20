@@ -1,7 +1,7 @@
 import { stageNames } from "lib";
 import useSWR from "swr";
 import { Spinner } from "./spinner";
-
+import { db } from "database";
 interface StageListProps {
   pillar: string;
   subpillar?: string;
@@ -9,6 +9,7 @@ interface StageListProps {
   color: string;
 }
 
+type DigitalRightStageData = Record<string, string | undefined>;
 interface DigitalRightStageListProps {
   pillar: string;
   currentStage: number;
@@ -16,17 +17,28 @@ interface DigitalRightStageListProps {
 }
 
 const fetchStages = async (_: string, pillar: string, subpillar: string) => {
-  return await fetch(`/api/stages?pillar=${pillar}&subpillar=${subpillar || ""}`).then((res) => res.json());
+   // return await fetch(`/undp-digital-development-compass/api/stages?pillar=${pillar}&subpillar=${subpillar || ""}`).then((res) => res.json());
+   if (!pillar) {
+    return;
+  }
+  let subPillar = subpillar ?? "";
+  return db.definitions.find(
+    (d) => d["Pillar"] === pillar && d["Sub-Pillar"] === subPillar
+  );
 };
 
-const digitalRightFetchStages = async (_: string, pillar: string) => {
-  return await fetch(`/api/digitalRightStages?pillar=${pillar}`).then((res) => res.json());
+const digitalRightFetchStages = async (_: string, pillar: string): Promise<DigitalRightStageData | undefined> => {
+  // return await fetch(`/api/digitalRightStages?pillar=${pillar}`).then((res) => res.json());
+  if (!pillar) {
+    return;
+  }
+  const definition = db.digital_right_definitions.find((d) => d["Pillar"] === pillar);
+  return definition as unknown as DigitalRightStageData;
 };
 
 export function StageList(props: StageListProps) {
   const { pillar, subpillar, color, currentStage } = props;
-  const { data } = useSWR(["stages", pillar, subpillar], fetchStages);
-
+  const { data } = useSWR<any>(["stages", pillar, subpillar], fetchStages);
   if (!data)
     return (
       <div className="flex items-center">
