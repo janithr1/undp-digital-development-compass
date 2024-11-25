@@ -161,7 +161,7 @@ export function MobileMenuSideView({ onClose }: MobileMenuSideViewProps) {
               Digital Development Compass
             </a>
           </Link>
-          <Link href="/undp-digital-development-compass/methodology/digital-rights-dashboard">
+          <Link href="/methodology/digital-rights-dashboard">
             <a className={`text-base w-full flex items-center`}>
               Digital Rights Dashboard
             </a>

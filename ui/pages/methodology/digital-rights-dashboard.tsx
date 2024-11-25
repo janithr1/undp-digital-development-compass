@@ -35,7 +35,7 @@ export default function DIGITAL_RIGHTS_DASHBOARD(
         <span className="[color:#D12800] mr-3">/</span>
         <span className="[color:#D12800] hover:[color:#ee402d] mr-3">METHODOLOGY</span>
         <span className="[color:#D12800] mr-3">/</span>
-        <Link href="/undp-digital-development-compass/methodology/digital-rights-dashboard">
+        <Link href="/methodology/digital-rights-dashboard">
           <a className="ml-0 [color:#000000]">DIGITAL RIGHTS DASHBOARD</a>
         </Link>
       </nav>
