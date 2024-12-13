@@ -1,5 +1,4 @@
-Country,Code,score,data_country,data_year
-Germany,DEU,4.20,,
+Germany,DEU,4.20,data_country,data_year
 Sweden,SWE,4.05,,
 Belgium,BEL,4.04,,
 Austria,AUT,4.03,,
